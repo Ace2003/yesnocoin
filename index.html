@@ -49,7 +49,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 350px;
+            min-height: 300px;
         }
 
         .coin {
@@ -126,185 +126,79 @@
             100% { background-position: 0% 50%; }
         }
 
-        .dice-container {
+        .simple-dice-container {
             perspective: 1200px;
-            perspective-origin: 50% 50%;
         }
 
-        .dice {
+        .simple-dice {
+            width: 180px;
+            height: 180px;
             position: relative;
-            transform-style: preserve-3d;
             cursor: pointer;
-            transition: transform 0.1s;
         }
 
-        .dice.rolling {
-            animation: none;
-        }
-
-        .dice-face {
+        .simple-dice-face {
             position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 20px;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 2.5rem;
+            font-size: 3.5rem;
             font-weight: bold;
             color: white;
-            border: 3px solid rgba(255, 255, 255, 0.4);
-            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.1), 0 5px 15px rgba(0, 0, 0, 0.2);
             backface-visibility: hidden;
-            border-radius: 12px;
-            overflow: hidden;
+            box-shadow: 
+                inset 0 0 30px rgba(0, 0, 0, 0.1),
+                0 10px 30px rgba(0, 0, 0, 0.3),
+                inset 0 2px 0 rgba(255, 255, 255, 0.3);
+            transform-style: preserve-3d;
         }
 
-        .dice-face::before {
+        .simple-dice-face::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             height: 50%;
-            background: linear-gradient(to bottom, rgba(255,255,255,0.2), transparent);
+            background: linear-gradient(to bottom, rgba(255,255,255,0.25), transparent);
             pointer-events: none;
-            border-radius: 12px 12px 0 0;
+            border-radius: 20px 20px 0 0;
         }
 
-        .dice-style-classic .dice-face {
+        .simple-dice-face .dots {
+            display: grid;
+            gap: 8px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .simple-dice-face .dot {
+            width: 16px;
+            height: 16px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .dice-style-classic .simple-dice-face {
             background: linear-gradient(145deg, #ffd700 0%, #ffb347 50%, #ff8c00 100%);
         }
 
-        .dice-style-modern .dice-face {
+        .dice-style-modern .simple-dice-face {
             background: linear-gradient(145deg, #4facfe 0%, #00f2fe 100%);
         }
 
-        .dice-style-dark .dice-face {
+        .dice-style-dark .simple-dice-face {
             background: linear-gradient(145deg, #434343 0%, #000000 100%);
         }
 
-        .dice-style-rainbow .dice-face {
+        .dice-style-rainbow .simple-dice-face {
             background: linear-gradient(45deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #8b00ff);
             background-size: 400% 400%;
             animation: rainbow 3s ease infinite;
-        }
-
-        .dice-3 {
-            width: 160px;
-            height: 160px;
-        }
-
-        .dice-3 .dice-face {
-            width: 160px;
-            height: 140px;
-            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-            border-radius: 0;
-            border: none;
-            transform-origin: 50% 80%;
-        }
-
-        .dice-3 .dice-face:nth-child(1) {
-            transform: rotateX(70.53deg) translateZ(50px);
-        }
-
-        .dice-3 .dice-face:nth-child(2) {
-            transform: rotateX(70.53deg) rotateY(120deg) translateZ(50px);
-        }
-
-        .dice-3 .dice-face:nth-child(3) {
-            transform: rotateX(70.53deg) rotateY(240deg) translateZ(50px);
-        }
-
-        .dice-4 {
-            width: 160px;
-            height: 160px;
-        }
-
-        .dice-4 .dice-face {
-            width: 160px;
-            height: 140px;
-            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-            border-radius: 0;
-            border: none;
-        }
-
-        .dice-4 .dice-face:nth-child(1) {
-            transform: rotateX(35.26deg) translateZ(80px) rotateZ(0deg);
-        }
-
-        .dice-4 .dice-face:nth-child(2) {
-            transform: rotateY(120deg) rotateX(35.26deg) translateZ(80px) rotateZ(0deg);
-        }
-
-        .dice-4 .dice-face:nth-child(3) {
-            transform: rotateY(240deg) rotateX(35.26deg) translateZ(80px) rotateZ(0deg);
-        }
-
-        .dice-4 .dice-face:nth-child(4) {
-            transform: rotateX(-90deg) translateZ(80px) rotateZ(60deg);
-        }
-
-        .dice-5 {
-            width: 180px;
-            height: 120px;
-        }
-
-        .dice-5 .dice-face {
-            width: 100px;
-            height: 120px;
-            border-radius: 8px;
-        }
-
-        .dice-5 .dice-face:nth-child(1) {
-            transform: rotateY(0deg) translateZ(68.8px);
-        }
-
-        .dice-5 .dice-face:nth-child(2) {
-            transform: rotateY(72deg) translateZ(68.8px);
-        }
-
-        .dice-5 .dice-face:nth-child(3) {
-            transform: rotateY(144deg) translateZ(68.8px);
-        }
-
-        .dice-5 .dice-face:nth-child(4) {
-            transform: rotateY(216deg) translateZ(68.8px);
-        }
-
-        .dice-5 .dice-face:nth-child(5) {
-            transform: rotateY(288deg) translateZ(68.8px);
-        }
-
-        .dice-6 {
-            width: 160px;
-            height: 160px;
-        }
-
-        .dice-6 .dice-face {
-            width: 160px;
-            height: 160px;
-        }
-
-        .dice-6 .dice-face:nth-child(1) {
-            transform: translateZ(80px);
-        }
-
-        .dice-6 .dice-face:nth-child(2) {
-            transform: rotateY(180deg) translateZ(80px);
-        }
-
-        .dice-6 .dice-face:nth-child(3) {
-            transform: rotateY(90deg) translateZ(80px);
-        }
-
-        .dice-6 .dice-face:nth-child(4) {
-            transform: rotateY(-90deg) translateZ(80px);
-        }
-
-        .dice-6 .dice-face:nth-child(5) {
-            transform: rotateX(90deg) translateZ(80px);
-        }
-
-        .dice-6 .dice-face:nth-child(6) {
-            transform: rotateX(-90deg) translateZ(80px);
         }
 
         .result-display {
@@ -605,19 +499,13 @@
                 font-size: 1.8rem;
             }
 
-            .coin {
+            .coin, .simple-dice {
                 width: 150px;
                 height: 150px;
             }
 
-            .dice-3, .dice-4, .dice-6 {
-                width: 130px;
-                height: 130px;
-            }
-
-            .dice-5 {
-                width: 140px;
-                height: 90px;
+            .simple-dice-face {
+                font-size: 2.5rem;
             }
 
             .result-text {
@@ -694,7 +582,6 @@
                 this.currentStyle = 'classic';
                 this.currentTheme = 'purple';
                 this.isAnimating = false;
-                this.currentRotation = { x: 0, y: 0, z: 0 };
                 
                 this.options = {
                     2: ['Yes', 'No'],
@@ -709,35 +596,6 @@
                     blue: 'linear-gradient(135deg, #2193b0 0%, #6dd5ed 100%)',
                     green: 'linear-gradient(135deg, #11998e 0%, #38ef7d 100%)',
                     orange: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)'
-                };
-
-                this.finalRotations = {
-                    3: {
-                        0: { x: 19.47, y: 0 },
-                        1: { x: 19.47, y: 240 },
-                        2: { x: 19.47, y: 120 }
-                    },
-                    4: {
-                        0: { x: 35.26, y: 0 },
-                        1: { x: 35.26, y: 120 },
-                        2: { x: 35.26, y: 240 },
-                        3: { x: -54.74, y: 60 }
-                    },
-                    5: {
-                        0: { x: 0, y: 0 },
-                        1: { x: 0, y: 288 },
-                        2: { x: 0, y: 216 },
-                        3: { x: 0, y: 144 },
-                        4: { x: 0, y: 72 }
-                    },
-                    6: {
-                        0: { x: 0, y: 0 },
-                        1: { x: 0, y: 180 },
-                        2: { x: 0, y: -90 },
-                        3: { x: 0, y: 90 },
-                        4: { x: -90, y: 0 },
-                        5: { x: 90, y: 0 }
-                    }
                 };
 
                 this.init();
@@ -808,7 +666,6 @@
                 
                 this.renderDecision();
                 this.hideResult();
-                this.currentRotation = { x: 0, y: 0, z: 0 };
             }
 
             setStyle(style) {
@@ -841,15 +698,16 @@
                 if (this.decisionCount === 2) {
                     this.renderCoin();
                 } else {
-                    this.renderDice();
+                    this.renderSimpleDice();
                 }
             }
 
             renderCoin() {
+                const options = this.options[2];
                 this.decisionDisplay.innerHTML = `
                     <div class="coin coin-style-${this.currentStyle}" id="coin">
-                        <div class="coin-face" id="coin-front">Yes</div>
-                        <div class="coin-face" style="transform: rotateY(180deg);" id="coin-back">No</div>
+                        <div class="coin-face" id="coin-front">${options[0]}</div>
+                        <div class="coin-face" style="transform: rotateY(180deg);" id="coin-back">${options[1]}</div>
                     </div>
                 `;
                 
@@ -860,24 +718,20 @@
                 }, 0);
             }
 
-            renderDice() {
+            renderSimpleDice() {
                 const options = this.options[this.decisionCount];
-                let facesHtml = '';
-                
-                options.forEach((opt, index) => {
-                    facesHtml += `<div class="dice-face">${opt}</div>`;
-                });
-
                 this.decisionDisplay.innerHTML = `
-                    <div class="dice-container">
-                        <div class="dice dice-style-${this.currentStyle} dice-${this.decisionCount}" id="dice" style="transform: rotateX(${this.currentRotation.x}deg) rotateY(${this.currentRotation.y}deg) rotateZ(${this.currentRotation.z}deg);">
-                            ${facesHtml}
+                    <div class="simple-dice-container">
+                        <div class="simple-dice dice-style-${this.currentStyle}" id="simple-dice" data-count="${this.decisionCount}">
+                            <div class="simple-dice-face" id="dice-face">
+                                <span id="dice-value">${options[0]}</span>
+                            </div>
                         </div>
                     </div>
                 `;
 
                 setTimeout(() => {
-                    document.getElementById('dice').addEventListener('click', () => {
+                    document.getElementById('simple-dice').addEventListener('click', () => {
                         if (!this.isAnimating) this.flip();
                     });
                 }, 0);
@@ -896,13 +750,13 @@
                 if (this.decisionCount === 2) {
                     this.animateCoin(resultIndex);
                 } else {
-                    this.animateDice(resultIndex);
+                    this.animateSimpleDice(resultIndex, result);
                 }
 
                 setTimeout(() => {
                     this.showResult(result);
                     this.isAnimating = false;
-                }, this.decisionCount === 2 ? 1000 : 1600);
+                }, this.decisionCount === 2 ? 1000 : 1200);
             }
 
             animateCoin(resultIndex) {
@@ -911,8 +765,6 @@
                 const coinBack = document.getElementById('coin-back');
                 
                 const options = this.options[2];
-                coinFront.textContent = options[0];
-                coinBack.textContent = options[1];
 
                 if (resultIndex === 0) {
                     coinFront.textContent = options[0];
@@ -928,52 +780,46 @@
                 }, 1000);
             }
 
-            animateDice(resultIndex) {
-                const dice = document.getElementById('dice');
-                if (!dice) return;
+            animateSimpleDice(resultIndex, result) {
+                const dice = document.getElementById('simple-dice');
+                const diceValue = document.getElementById('dice-value');
+                if (!dice || !diceValue) return;
 
-                const finalRotation = this.finalRotations[this.decisionCount][resultIndex];
-                
-                const extraSpinsX = Math.floor(Math.random() * 4) + 3;
-                const extraSpinsY = Math.floor(Math.random() * 4) + 3;
-                
-                const startX = this.currentRotation.x;
-                const startY = this.currentRotation.y;
-                const startZ = this.currentRotation.z;
-                
-                const targetX = finalRotation.x + (extraSpinsX * 360);
-                const targetY = finalRotation.y + (extraSpinsY * 360);
-                const targetZ = (Math.random() - 0.5) * 720;
-
-                const duration = 1500;
+                const duration = 1000;
                 const startTime = performance.now();
-
-                const easeOutQuart = (t) => 1 - Math.pow(1 - t, 4);
-                const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
+                
+                const options = this.options[this.decisionCount];
+                let frameCount = 0;
+                const totalFrames = Math.floor(duration / 50);
 
                 const animate = (currentTime) => {
                     const elapsed = currentTime - startTime;
                     const progress = Math.min(elapsed / duration, 1);
                     
-                    const easedProgress = easeOutQuart(progress);
+                    const currentFrame = Math.floor(progress * totalFrames);
+                    if (currentFrame > frameCount) {
+                        frameCount = currentFrame;
+                        const randomIndex = Math.floor(Math.random() * options.length);
+                        diceValue.textContent = options[randomIndex];
+                    }
+
+                    const wobbleX = Math.sin(progress * Math.PI * 6) * (1 - progress) * 20;
+                    const wobbleY = Math.cos(progress * Math.PI * 6) * (1 - progress) * 20;
+                    const scale = 1 + Math.sin(progress * Math.PI) * 0.15;
+                    const rotation = progress * 1080;
                     
-                    const currentX = startX + (targetX - startX) * easedProgress;
-                    const currentY = startY + (targetY - startY) * easedProgress;
-                    const currentZ = startZ + (targetZ - startZ) * easeOutCubic(progress);
-                    
-                    const wobble = Math.sin(progress * Math.PI * 4) * (1 - progress) * 10;
-                    
-                    dice.style.transform = `rotateX(${currentX + wobble}deg) rotateY(${currentY - wobble}deg) rotateZ(${currentZ}deg)`;
+                    dice.style.transform = `
+                        rotateX(${wobbleX + rotation * 0.3}deg) 
+                        rotateY(${wobbleY + rotation}deg) 
+                        rotateZ(${wobbleX * 0.5}deg)
+                        scale(${scale})
+                    `;
                     
                     if (progress < 1) {
                         requestAnimationFrame(animate);
                     } else {
-                        this.currentRotation = {
-                            x: finalRotation.x,
-                            y: finalRotation.y,
-                            z: 0
-                        };
-                        dice.style.transform = `rotateX(${finalRotation.x}deg) rotateY(${finalRotation.y}deg) rotateZ(0deg)`;
+                        diceValue.textContent = result;
+                        dice.style.transform = 'rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(1)';
                     }
                 };
 
